@@ -1,0 +1,9 @@
+pandas
+numpy
+fastapi[all]
+python-bcb
+DadosAbertosBrasil
+gspread
+gspread_dataframe
+gspread_formatting
+oauth2client
