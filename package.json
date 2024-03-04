@@ -1,11 +1,13 @@
 {
   "name": "financial-data-collector",
   "productName": "financial-data-collector",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "My Electron application description",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
+    "start:server":"app/dist/main/main.exe",
+    "build:server":"pyinstaller app/main.py --add-data app/coletor:coletor --add-data app/credentials.json:. --distpath ./app/dist --workpath ./app/build --noconfirm",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
@@ -25,6 +27,7 @@
     "@electron-forge/maker-zip": "^7.2.0",
     "@electron-forge/plugin-auto-unpack-natives": "^7.2.0",
     "@electron-forge/plugin-webpack": "^7.2.0",
+    "@electron-forge/publisher-github": "^7.2.0",
     "@types/electron-is-dev": "^1.1.1",
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.56",
@@ -34,6 +37,7 @@
     "@typescript-eslint/parser": "^5.0.0",
     "@vercel/webpack-asset-relocator-loader": "1.7.3",
     "css-loader": "^6.0.0",
+    "dotenv": "^16.4.5",
     "electron": "28.2.3",
     "electron-is-dev": "^3.0.1",
     "eslint": "^8.0.1",
@@ -46,6 +50,7 @@
     "typescript": "~4.5.4"
   },
   "dependencies": {
+    "@electron-forge/maker-dmg": "^7.3.0",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.10",

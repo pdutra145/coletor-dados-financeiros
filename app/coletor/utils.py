@@ -9,6 +9,12 @@ PLANILHA_ATUALIZADA = (
 )
 URL_BASE_IPCA = "https://servicodados.ibge.gov.br/api/v3/agregados/118/periodos/{ANO_MES}/variaveis/306?localidades=N1[all]"
 
+def br_date_parser(date:str):
+    return pd.to_datetime(date, format='%d/%m/%Y', dayfirst=True)
+
+def ipca_date_parser(date:str):
+    return pd.to_datetime(date, format='%m/%Y')
+
 def read_sheet():
     with pd.ExcelFile(PLANILHA) as xls:
         df = pd.read_excel(xls, sheet_name=None)
@@ -77,6 +83,9 @@ def get_expectativa_anual(indicador: str, initial_date:str):
         .select(ep.DataReferencia, ep.Data, ep.Mediana)
         .collect()
     )
+
+    dados['Data'] = pd.to_datetime(dados['Data'])
+    dados.set_index('Data', inplace=True)
 
     return dados
 

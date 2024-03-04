@@ -10,8 +10,6 @@ import isDev from 'electron-is-dev';
 import path from 'path';
 
 
-const spawnAsync = promisify(spawn)
-
 export function startServer(): ChildProcess {
   // Replace "python" with the path to your Python executable if necessary
   // and "app/main.py" with the path to your FastAPI application

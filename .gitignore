@@ -94,3 +94,4 @@ out/
 #Python
 .venv/
 credentials.json
+*.xlsx

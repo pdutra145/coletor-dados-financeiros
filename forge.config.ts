@@ -8,6 +8,10 @@ import { WebpackPlugin } from '@electron-forge/plugin-webpack';
 
 import { mainConfig } from './webpack.main.config';
 import { rendererConfig } from './webpack.renderer.config';
+import 'dotenv/config'
+import MakerDMG from '@electron-forge/maker-dmg';
+
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN || ''
 
 const config: ForgeConfig = {
   packagerConfig: {
@@ -15,7 +19,23 @@ const config: ForgeConfig = {
     extraResource:['./app/']
   },
   rebuildConfig: {},
-  makers: [new MakerZIP({}, ['darwin', 'linux', 'win32'])],
+  makers: [new MakerZIP({}), new MakerDMG({
+    name:'Coletor_de_Dados_Financeiros'
+  })],
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        authToken:GITHUB_TOKEN,
+        repository: {
+          owner: 'Pedro Dutra',
+          name: 'coletor-dados-financeiros'
+        },
+        prerelease: true
+      }
+    },
+
+  ],
   plugins: [
     
     new AutoUnpackNativesPlugin({}),

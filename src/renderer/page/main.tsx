@@ -6,7 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import FocusPage from './focus';
-import MetaSelicPage from './metaSelic';
+import SelicPage from './selic';
 import IpcaMensalPage from './ipca';
 
 enum Indicadores {
@@ -45,7 +45,7 @@ const MainPage = () => {
             <FormControlLabel
               value={Indicadores.SelicMeta}
               control={<Radio />}
-              label="Meta Selic"
+              label="Selic Over"
             />
             <FormControlLabel
               value={Indicadores.IpcaMensal}
@@ -57,7 +57,7 @@ const MainPage = () => {
       </Grid>
       <Stack justifyContent={'center'}>
         {indicador === Indicadores.Focus && <FocusPage />}
-        {indicador === Indicadores.SelicMeta && <MetaSelicPage />}
+        {indicador === Indicadores.SelicMeta && <SelicPage />}
         {indicador === Indicadores.IpcaMensal && <IpcaMensalPage />}
       </Stack>
     </Stack>
