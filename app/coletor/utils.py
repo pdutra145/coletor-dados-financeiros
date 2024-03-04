@@ -84,8 +84,8 @@ def get_expectativa_anual(indicador: str, initial_date:str):
         .collect()
     )
 
-    dados['Data'] = pd.to_datetime(dados['Data'])
-    dados.set_index('Data', inplace=True)
+    # dados['Data'] = pd.to_datetime(dados['Data'])
+    # dados.set_index('Data', inplace=True)
 
     return dados
 

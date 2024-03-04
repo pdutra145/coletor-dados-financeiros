@@ -1,7 +1,7 @@
 {
   "name": "financial-data-collector",
   "productName": "financial-data-collector",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "My Electron application description",
   "main": ".webpack/main",
   "scripts": {
@@ -9,7 +9,7 @@
     "start:server":"app/dist/main/main.exe",
     "build:server":"pyinstaller app/main.py --add-data app/coletor:coletor --add-data app/credentials.json:. --distpath ./app/dist --workpath ./app/build --noconfirm",
     "package": "electron-forge package",
-    "make": "electron-forge make",
+    "make": "yarn build:server && electron-forge make",
     "publish": "electron-forge publish",
     "lint": "eslint --ext .ts,.tsx ."
   },
